@@ -1,6 +1,5 @@
 package com.chenwei.csust;
 
-import com.chenwei.csust.originaldata.OriginalDataInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +18,7 @@ public class CreditRiskControlApplicationTest
     @Test
     public void dataTest()
     {
-        OriginalDataInfo originalDataInfo = new OriginalDataInfo();
-        originalDataInfo.readData();
+       /* OriginalDataInfo originalDataInfo = new OriginalDataInfo();
+        originalDataInfo.readData();*/
     }
 }

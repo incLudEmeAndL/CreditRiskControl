@@ -7,4 +7,8 @@ import org.springframework.context.annotation.Configuration;
 public class DataSourceConfig {
     @Value("${originalDataUrl}")
     private String OriginalDataUrl;
+
+    public String getOriginalDataUrl() {
+        return OriginalDataUrl;
+    }
 }
