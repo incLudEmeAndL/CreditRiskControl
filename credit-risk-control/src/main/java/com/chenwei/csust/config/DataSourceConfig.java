@@ -5,6 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DataSourceConfig {
-    @Value("${originaldata.url}")
+    @Value("${originalDataUrl}")
     private String OriginalDataUrl;
 }
