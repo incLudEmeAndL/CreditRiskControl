@@ -1,4 +1,4 @@
-package com.chenwei.csust.entity;
+package com.chenwei.csust.common.entity;
 
 public class ApiResult<T> {
     /**

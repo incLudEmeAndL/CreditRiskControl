@@ -1,7 +1,7 @@
 package com.chenwei.csust.util;
 
 import com.chenwei.csust.common.constante.ResponseStatusConst;
-import com.chenwei.csust.entity.ApiResult;
+import com.chenwei.csust.common.entity.ApiResult;
 
 public class ApiResultHandler {
     public static ApiResult apiResult = new ApiResult();

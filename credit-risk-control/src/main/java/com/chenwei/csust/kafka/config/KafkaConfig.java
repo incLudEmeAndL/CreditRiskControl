@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class KafkaConfig {
-    @Value("${kafka.brokerAddress}")
+    @Value("${bootstrap.servers}")
     private String brokerAddress;
 
     @Value("${kafka.topic}")
