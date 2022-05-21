@@ -64,7 +64,7 @@ public class ModelInfoController {
     @ApiOperation(value = "获取最高评分模型", notes = "获取最高评分模型")
     public ApiResult maxAccuracyModelInfo(String modelType, String staffId) {
         logger.info(staffId);
-        if (staffId != null || !staffId.isEmpty()) {
+        if (staffId != null) {
             ModelInfoDto modelInfoDto = modelInfoService.getMaxAccuracyModel(modelType);
             logger.info("[ModelInfoController]-maxAccuracyModelInfo info :成功返回最高评分模型");
             return ApiResultHandler.success(modelInfoDto);

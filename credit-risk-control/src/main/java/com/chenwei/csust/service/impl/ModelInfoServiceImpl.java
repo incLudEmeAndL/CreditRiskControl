@@ -42,9 +42,6 @@ public class ModelInfoServiceImpl implements ModelInfoService {
 
     @Override
     public ModelInfoDto getMaxAccuracyModel(String modelType) {
-        if (modelType.isEmpty()){
-            return null;
-        }
         ModelInfo modelInfo =  modelInfoMapper.getMaxAccuracyModelByType(modelType);
         return new ModelInfoDto(
                 modelInfo.getId(),

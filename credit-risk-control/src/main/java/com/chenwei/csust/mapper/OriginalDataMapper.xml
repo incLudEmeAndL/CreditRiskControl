@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenwei.csust.mapper.OriginalDataMapper">
+  <resultMap id="BaseResultMap" type="com.chenwei.csust.entity.OriginalData">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="loan_amnt" jdbcType="DOUBLE" property="loanAmnt" />
+    <result column="term" jdbcType="DOUBLE" property="term" />
+    <result column="int_rate" jdbcType="DOUBLE" property="intRate" />
+    <result column="installment" jdbcType="DOUBLE" property="installment" />
+    <result column="annual_inc" jdbcType="DOUBLE" property="annualInc" />
+    <result column="loan_status" jdbcType="DOUBLE" property="loanStatus" />
+    <result column="dti" jdbcType="DOUBLE" property="dti" />
+    <result column="earliest_cr_line" jdbcType="DOUBLE" property="earliestCrLine" />
+    <result column="open_acc" jdbcType="DOUBLE" property="openAcc" />
+    <result column="pub_rec" jdbcType="DOUBLE" property="pubRec" />
+    <result column="revol_bal" jdbcType="DOUBLE" property="revolBal" />
+    <result column="revol_util" jdbcType="DOUBLE" property="revolUtil" />
+    <result column="total_acc" jdbcType="DOUBLE" property="totalAcc" />
+    <result column="mort_acc" jdbcType="DOUBLE" property="mortAcc" />
+    <result column="pub_rec_bankruptcies" jdbcType="DOUBLE" property="pubRecBankruptcies" />
+    <result column="sub_grade_A2" jdbcType="DOUBLE" property="subGradeA2" />
+    <result column="sub_grade_A3" jdbcType="DOUBLE" property="subGradeA3" />
+    <result column="sub_grade_A4" jdbcType="DOUBLE" property="subGradeA4" />
+    <result column="sub_grade_A5" jdbcType="DOUBLE" property="subGradeA5" />
+    <result column="sub_grade_B1" jdbcType="DOUBLE" property="subGradeB1" />
+    <result column="sub_grade_B2" jdbcType="DOUBLE" property="subGradeB2" />
+    <result column="sub_grade_B3" jdbcType="DOUBLE" property="subGradeB3" />
+    <result column="sub_grade_B4" jdbcType="DOUBLE" property="subGradeB4" />
+    <result column="sub_grade_B5" jdbcType="DOUBLE" property="subGradeB5" />
+    <result column="sub_grade_C1" jdbcType="DOUBLE" property="subGradeC1" />
+    <result column="sub_grade_C2" jdbcType="DOUBLE" property="subGradeC2" />
+    <result column="sub_grade_C3" jdbcType="DOUBLE" property="subGradeC3" />
+    <result column="sub_grade_C4" jdbcType="DOUBLE" property="subGradeC4" />
+    <result column="sub_grade_C5" jdbcType="DOUBLE" property="subGradeC5" />
+    <result column="sub_grade_D1" jdbcType="DOUBLE" property="subGradeD1" />
+    <result column="sub_grade_D2" jdbcType="DOUBLE" property="subGradeD2" />
+    <result column="sub_grade_D3" jdbcType="DOUBLE" property="subGradeD3" />
+    <result column="sub_grade_D4" jdbcType="DOUBLE" property="subGradeD4" />
+    <result column="sub_grade_D5" jdbcType="DOUBLE" property="subGradeD5" />
+    <result column="sub_grade_E1" jdbcType="DOUBLE" property="subGradeE1" />
+    <result column="sub_grade_E2" jdbcType="DOUBLE" property="subGradeE2" />
+    <result column="sub_grade_E3" jdbcType="DOUBLE" property="subGradeE3" />
+    <result column="sub_grade_E4" jdbcType="DOUBLE" property="subGradeE4" />
+    <result column="sub_grade_E5" jdbcType="DOUBLE" property="subGradeE5" />
+    <result column="sub_grade_F1" jdbcType="DOUBLE" property="subGradeF1" />
+    <result column="sub_grade_F2" jdbcType="DOUBLE" property="subGradeF2" />
+    <result column="sub_grade_F3" jdbcType="DOUBLE" property="subGradeF3" />
+    <result column="sub_grade_F4" jdbcType="DOUBLE" property="subGradeF4" />
+    <result column="sub_grade_F5" jdbcType="DOUBLE" property="subGradeF5" />
+    <result column="sub_grade_G1" jdbcType="DOUBLE" property="subGradeG1" />
+    <result column="sub_grade_G2" jdbcType="DOUBLE" property="subGradeG2" />
+    <result column="sub_grade_G3" jdbcType="DOUBLE" property="subGradeG3" />
+    <result column="sub_grade_G4" jdbcType="DOUBLE" property="subGradeG4" />
+    <result column="sub_grade_G5" jdbcType="DOUBLE" property="subGradeG5" />
+    <result column="verification_status_Source_Verified" jdbcType="DOUBLE" property="verificationStatusSourceVerified" />
+    <result column="verification_status_Verified" jdbcType="DOUBLE" property="verificationStatusVerified" />
+    <result column="purpose_credit_card" jdbcType="DOUBLE" property="purposeCreditCard" />
+    <result column="purpose_debt_consolidation" jdbcType="DOUBLE" property="purposeDebtConsolidation" />
+    <result column="purpose_educational" jdbcType="DOUBLE" property="purposeEducational" />
+    <result column="purpose_home_improvement" jdbcType="DOUBLE" property="purposeHomeImprovement" />
+    <result column="purpose_house" jdbcType="DOUBLE" property="purposeHouse" />
+    <result column="purpose_major_purchase" jdbcType="DOUBLE" property="purposeMajorPurchase" />
+    <result column="purpose_medical" jdbcType="DOUBLE" property="purposeMedical" />
+    <result column="purpose_moving" jdbcType="DOUBLE" property="purposeMoving" />
+    <result column="purpose_other" jdbcType="DOUBLE" property="purposeOther" />
+    <result column="purpose_renewable_energy" jdbcType="DOUBLE" property="purposeRenewableEnergy" />
+    <result column="purpose_small_business" jdbcType="DOUBLE" property="purposeSmallBusiness" />
+    <result column="purpose_vacation" jdbcType="DOUBLE" property="purposeVacation" />
+    <result column="purpose_wedding" jdbcType="DOUBLE" property="purposeWedding" />
+    <result column="initial_list_status_w" jdbcType="DOUBLE" property="initialListStatusW" />
+    <result column="application_type_INDIVIDUAL" jdbcType="DOUBLE" property="applicationTypeIndividual" />
+    <result column="application_type_JOINT" jdbcType="DOUBLE" property="applicationTypeJoint" />
+    <result column="home_ownership_MORTGAGE" jdbcType="DOUBLE" property="homeOwnershipMortgage" />
+    <result column="home_ownership_NONE" jdbcType="DOUBLE" property="homeOwnershipNone" />
+    <result column="home_ownership_OTHER" jdbcType="DOUBLE" property="homeOwnershipOther" />
+    <result column="home_ownership_OWN" jdbcType="DOUBLE" property="homeOwnershipOwn" />
+    <result column="home_ownership_RENT" jdbcType="DOUBLE" property="homeOwnershipRent" />
+    <result column="zip_code_05113" jdbcType="DOUBLE" property="zipCode05113" />
+    <result column="zip_code_11650" jdbcType="DOUBLE" property="zipCode11650" />
+    <result column="zip_code_22690" jdbcType="DOUBLE" property="zipCode22690" />
+    <result column="zip_code_29597" jdbcType="DOUBLE" property="zipCode29597" />
+    <result column="zip_code_30723" jdbcType="DOUBLE" property="zipCode30723" />
+    <result column="zip_code_48052" jdbcType="DOUBLE" property="zipCode48052" />
+    <result column="zip_code_70466" jdbcType="DOUBLE" property="zipCode70466" />
+    <result column="zip_code_86630" jdbcType="DOUBLE" property="zipCode86630" />
+    <result column="zip_code_93700" jdbcType="DOUBLE" property="zipCode93700" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, loan_amnt, term, int_rate, installment, annual_inc, loan_status, dti, earliest_cr_line, 
+    open_acc, pub_rec, revol_bal, revol_util, total_acc, mort_acc, pub_rec_bankruptcies, 
+    sub_grade_A2, sub_grade_A3, sub_grade_A4, sub_grade_A5, sub_grade_B1, sub_grade_B2, 
+    sub_grade_B3, sub_grade_B4, sub_grade_B5, sub_grade_C1, sub_grade_C2, sub_grade_C3, 
+    sub_grade_C4, sub_grade_C5, sub_grade_D1, sub_grade_D2, sub_grade_D3, sub_grade_D4, 
+    sub_grade_D5, sub_grade_E1, sub_grade_E2, sub_grade_E3, sub_grade_E4, sub_grade_E5, 
+    sub_grade_F1, sub_grade_F2, sub_grade_F3, sub_grade_F4, sub_grade_F5, sub_grade_G1, 
+    sub_grade_G2, sub_grade_G3, sub_grade_G4, sub_grade_G5, verification_status_Source_Verified, 
+    verification_status_Verified, purpose_credit_card, purpose_debt_consolidation, purpose_educational, 
+    purpose_home_improvement, purpose_house, purpose_major_purchase, purpose_medical, 
+    purpose_moving, purpose_other, purpose_renewable_energy, purpose_small_business, 
+    purpose_vacation, purpose_wedding, initial_list_status_w, application_type_INDIVIDUAL, 
+    application_type_JOINT, home_ownership_MORTGAGE, home_ownership_NONE, home_ownership_OTHER, 
+    home_ownership_OWN, home_ownership_RENT, zip_code_05113, zip_code_11650, zip_code_22690, 
+    zip_code_29597, zip_code_30723, zip_code_48052, zip_code_70466, zip_code_86630, zip_code_93700
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from original_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from original_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chenwei.csust.entity.OriginalData">
+    insert into original_data (id, loan_amnt, term, 
+      int_rate, installment, annual_inc, 
+      loan_status, dti, earliest_cr_line, 
+      open_acc, pub_rec, revol_bal, 
+      revol_util, total_acc, mort_acc, 
+      pub_rec_bankruptcies, sub_grade_A2, sub_grade_A3, 
+      sub_grade_A4, sub_grade_A5, sub_grade_B1, 
+      sub_grade_B2, sub_grade_B3, sub_grade_B4, 
+      sub_grade_B5, sub_grade_C1, sub_grade_C2, 
+      sub_grade_C3, sub_grade_C4, sub_grade_C5, 
+      sub_grade_D1, sub_grade_D2, sub_grade_D3, 
+      sub_grade_D4, sub_grade_D5, sub_grade_E1, 
+      sub_grade_E2, sub_grade_E3, sub_grade_E4, 
+      sub_grade_E5, sub_grade_F1, sub_grade_F2, 
+      sub_grade_F3, sub_grade_F4, sub_grade_F5, 
+      sub_grade_G1, sub_grade_G2, sub_grade_G3, 
+      sub_grade_G4, sub_grade_G5, verification_status_Source_Verified, 
+      verification_status_Verified, purpose_credit_card, 
+      purpose_debt_consolidation, purpose_educational, 
+      purpose_home_improvement, purpose_house, purpose_major_purchase, 
+      purpose_medical, purpose_moving, purpose_other, 
+      purpose_renewable_energy, purpose_small_business, 
+      purpose_vacation, purpose_wedding, initial_list_status_w, 
+      application_type_INDIVIDUAL, application_type_JOINT, 
+      home_ownership_MORTGAGE, home_ownership_NONE, 
+      home_ownership_OTHER, home_ownership_OWN, home_ownership_RENT, 
+      zip_code_05113, zip_code_11650, zip_code_22690, 
+      zip_code_29597, zip_code_30723, zip_code_48052, 
+      zip_code_70466, zip_code_86630, zip_code_93700
+      )
+    values (#{id,jdbcType=INTEGER}, #{loanAmnt,jdbcType=DOUBLE}, #{term,jdbcType=DOUBLE}, 
+      #{intRate,jdbcType=DOUBLE}, #{installment,jdbcType=DOUBLE}, #{annualInc,jdbcType=DOUBLE}, 
+      #{loanStatus,jdbcType=DOUBLE}, #{dti,jdbcType=DOUBLE}, #{earliestCrLine,jdbcType=DOUBLE}, 
+      #{openAcc,jdbcType=DOUBLE}, #{pubRec,jdbcType=DOUBLE}, #{revolBal,jdbcType=DOUBLE}, 
+      #{revolUtil,jdbcType=DOUBLE}, #{totalAcc,jdbcType=DOUBLE}, #{mortAcc,jdbcType=DOUBLE}, 
+      #{pubRecBankruptcies,jdbcType=DOUBLE}, #{subGradeA2,jdbcType=DOUBLE}, #{subGradeA3,jdbcType=DOUBLE}, 
+      #{subGradeA4,jdbcType=DOUBLE}, #{subGradeA5,jdbcType=DOUBLE}, #{subGradeB1,jdbcType=DOUBLE}, 
+      #{subGradeB2,jdbcType=DOUBLE}, #{subGradeB3,jdbcType=DOUBLE}, #{subGradeB4,jdbcType=DOUBLE}, 
+      #{subGradeB5,jdbcType=DOUBLE}, #{subGradeC1,jdbcType=DOUBLE}, #{subGradeC2,jdbcType=DOUBLE}, 
+      #{subGradeC3,jdbcType=DOUBLE}, #{subGradeC4,jdbcType=DOUBLE}, #{subGradeC5,jdbcType=DOUBLE}, 
+      #{subGradeD1,jdbcType=DOUBLE}, #{subGradeD2,jdbcType=DOUBLE}, #{subGradeD3,jdbcType=DOUBLE}, 
+      #{subGradeD4,jdbcType=DOUBLE}, #{subGradeD5,jdbcType=DOUBLE}, #{subGradeE1,jdbcType=DOUBLE}, 
+      #{subGradeE2,jdbcType=DOUBLE}, #{subGradeE3,jdbcType=DOUBLE}, #{subGradeE4,jdbcType=DOUBLE}, 
+      #{subGradeE5,jdbcType=DOUBLE}, #{subGradeF1,jdbcType=DOUBLE}, #{subGradeF2,jdbcType=DOUBLE}, 
+      #{subGradeF3,jdbcType=DOUBLE}, #{subGradeF4,jdbcType=DOUBLE}, #{subGradeF5,jdbcType=DOUBLE}, 
+      #{subGradeG1,jdbcType=DOUBLE}, #{subGradeG2,jdbcType=DOUBLE}, #{subGradeG3,jdbcType=DOUBLE}, 
+      #{subGradeG4,jdbcType=DOUBLE}, #{subGradeG5,jdbcType=DOUBLE}, #{verificationStatusSourceVerified,jdbcType=DOUBLE}, 
+      #{verificationStatusVerified,jdbcType=DOUBLE}, #{purposeCreditCard,jdbcType=DOUBLE}, 
+      #{purposeDebtConsolidation,jdbcType=DOUBLE}, #{purposeEducational,jdbcType=DOUBLE}, 
+      #{purposeHomeImprovement,jdbcType=DOUBLE}, #{purposeHouse,jdbcType=DOUBLE}, #{purposeMajorPurchase,jdbcType=DOUBLE}, 
+      #{purposeMedical,jdbcType=DOUBLE}, #{purposeMoving,jdbcType=DOUBLE}, #{purposeOther,jdbcType=DOUBLE}, 
+      #{purposeRenewableEnergy,jdbcType=DOUBLE}, #{purposeSmallBusiness,jdbcType=DOUBLE}, 
+      #{purposeVacation,jdbcType=DOUBLE}, #{purposeWedding,jdbcType=DOUBLE}, #{initialListStatusW,jdbcType=DOUBLE}, 
+      #{applicationTypeIndividual,jdbcType=DOUBLE}, #{applicationTypeJoint,jdbcType=DOUBLE}, 
+      #{homeOwnershipMortgage,jdbcType=DOUBLE}, #{homeOwnershipNone,jdbcType=DOUBLE}, 
+      #{homeOwnershipOther,jdbcType=DOUBLE}, #{homeOwnershipOwn,jdbcType=DOUBLE}, #{homeOwnershipRent,jdbcType=DOUBLE}, 
+      #{zipCode05113,jdbcType=DOUBLE}, #{zipCode11650,jdbcType=DOUBLE}, #{zipCode22690,jdbcType=DOUBLE}, 
+      #{zipCode29597,jdbcType=DOUBLE}, #{zipCode30723,jdbcType=DOUBLE}, #{zipCode48052,jdbcType=DOUBLE}, 
+      #{zipCode70466,jdbcType=DOUBLE}, #{zipCode86630,jdbcType=DOUBLE}, #{zipCode93700,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chenwei.csust.entity.OriginalData">
+    insert into original_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="loanAmnt != null">
+        loan_amnt,
+      </if>
+      <if test="term != null">
+        term,
+      </if>
+      <if test="intRate != null">
+        int_rate,
+      </if>
+      <if test="installment != null">
+        installment,
+      </if>
+      <if test="annualInc != null">
+        annual_inc,
+      </if>
+      <if test="loanStatus != null">
+        loan_status,
+      </if>
+      <if test="dti != null">
+        dti,
+      </if>
+      <if test="earliestCrLine != null">
+        earliest_cr_line,
+      </if>
+      <if test="openAcc != null">
+        open_acc,
+      </if>
+      <if test="pubRec != null">
+        pub_rec,
+      </if>
+      <if test="revolBal != null">
+        revol_bal,
+      </if>
+      <if test="revolUtil != null">
+        revol_util,
+      </if>
+      <if test="totalAcc != null">
+        total_acc,
+      </if>
+      <if test="mortAcc != null">
+        mort_acc,
+      </if>
+      <if test="pubRecBankruptcies != null">
+        pub_rec_bankruptcies,
+      </if>
+      <if test="subGradeA2 != null">
+        sub_grade_A2,
+      </if>
+      <if test="subGradeA3 != null">
+        sub_grade_A3,
+      </if>
+      <if test="subGradeA4 != null">
+        sub_grade_A4,
+      </if>
+      <if test="subGradeA5 != null">
+        sub_grade_A5,
+      </if>
+      <if test="subGradeB1 != null">
+        sub_grade_B1,
+      </if>
+      <if test="subGradeB2 != null">
+        sub_grade_B2,
+      </if>
+      <if test="subGradeB3 != null">
+        sub_grade_B3,
+      </if>
+      <if test="subGradeB4 != null">
+        sub_grade_B4,
+      </if>
+      <if test="subGradeB5 != null">
+        sub_grade_B5,
+      </if>
+      <if test="subGradeC1 != null">
+        sub_grade_C1,
+      </if>
+      <if test="subGradeC2 != null">
+        sub_grade_C2,
+      </if>
+      <if test="subGradeC3 != null">
+        sub_grade_C3,
+      </if>
+      <if test="subGradeC4 != null">
+        sub_grade_C4,
+      </if>
+      <if test="subGradeC5 != null">
+        sub_grade_C5,
+      </if>
+      <if test="subGradeD1 != null">
+        sub_grade_D1,
+      </if>
+      <if test="subGradeD2 != null">
+        sub_grade_D2,
+      </if>
+      <if test="subGradeD3 != null">
+        sub_grade_D3,
+      </if>
+      <if test="subGradeD4 != null">
+        sub_grade_D4,
+      </if>
+      <if test="subGradeD5 != null">
+        sub_grade_D5,
+      </if>
+      <if test="subGradeE1 != null">
+        sub_grade_E1,
+      </if>
+      <if test="subGradeE2 != null">
+        sub_grade_E2,
+      </if>
+      <if test="subGradeE3 != null">
+        sub_grade_E3,
+      </if>
+      <if test="subGradeE4 != null">
+        sub_grade_E4,
+      </if>
+      <if test="subGradeE5 != null">
+        sub_grade_E5,
+      </if>
+      <if test="subGradeF1 != null">
+        sub_grade_F1,
+      </if>
+      <if test="subGradeF2 != null">
+        sub_grade_F2,
+      </if>
+      <if test="subGradeF3 != null">
+        sub_grade_F3,
+      </if>
+      <if test="subGradeF4 != null">
+        sub_grade_F4,
+      </if>
+      <if test="subGradeF5 != null">
+        sub_grade_F5,
+      </if>
+      <if test="subGradeG1 != null">
+        sub_grade_G1,
+      </if>
+      <if test="subGradeG2 != null">
+        sub_grade_G2,
+      </if>
+      <if test="subGradeG3 != null">
+        sub_grade_G3,
+      </if>
+      <if test="subGradeG4 != null">
+        sub_grade_G4,
+      </if>
+      <if test="subGradeG5 != null">
+        sub_grade_G5,
+      </if>
+      <if test="verificationStatusSourceVerified != null">
+        verification_status_Source_Verified,
+      </if>
+      <if test="verificationStatusVerified != null">
+        verification_status_Verified,
+      </if>
+      <if test="purposeCreditCard != null">
+        purpose_credit_card,
+      </if>
+      <if test="purposeDebtConsolidation != null">
+        purpose_debt_consolidation,
+      </if>
+      <if test="purposeEducational != null">
+        purpose_educational,
+      </if>
+      <if test="purposeHomeImprovement != null">
+        purpose_home_improvement,
+      </if>
+      <if test="purposeHouse != null">
+        purpose_house,
+      </if>
+      <if test="purposeMajorPurchase != null">
+        purpose_major_purchase,
+      </if>
+      <if test="purposeMedical != null">
+        purpose_medical,
+      </if>
+      <if test="purposeMoving != null">
+        purpose_moving,
+      </if>
+      <if test="purposeOther != null">
+        purpose_other,
+      </if>
+      <if test="purposeRenewableEnergy != null">
+        purpose_renewable_energy,
+      </if>
+      <if test="purposeSmallBusiness != null">
+        purpose_small_business,
+      </if>
+      <if test="purposeVacation != null">
+        purpose_vacation,
+      </if>
+      <if test="purposeWedding != null">
+        purpose_wedding,
+      </if>
+      <if test="initialListStatusW != null">
+        initial_list_status_w,
+      </if>
+      <if test="applicationTypeIndividual != null">
+        application_type_INDIVIDUAL,
+      </if>
+      <if test="applicationTypeJoint != null">
+        application_type_JOINT,
+      </if>
+      <if test="homeOwnershipMortgage != null">
+        home_ownership_MORTGAGE,
+      </if>
+      <if test="homeOwnershipNone != null">
+        home_ownership_NONE,
+      </if>
+      <if test="homeOwnershipOther != null">
+        home_ownership_OTHER,
+      </if>
+      <if test="homeOwnershipOwn != null">
+        home_ownership_OWN,
+      </if>
+      <if test="homeOwnershipRent != null">
+        home_ownership_RENT,
+      </if>
+      <if test="zipCode05113 != null">
+        zip_code_05113,
+      </if>
+      <if test="zipCode11650 != null">
+        zip_code_11650,
+      </if>
+      <if test="zipCode22690 != null">
+        zip_code_22690,
+      </if>
+      <if test="zipCode29597 != null">
+        zip_code_29597,
+      </if>
+      <if test="zipCode30723 != null">
+        zip_code_30723,
+      </if>
+      <if test="zipCode48052 != null">
+        zip_code_48052,
+      </if>
+      <if test="zipCode70466 != null">
+        zip_code_70466,
+      </if>
+      <if test="zipCode86630 != null">
+        zip_code_86630,
+      </if>
+      <if test="zipCode93700 != null">
+        zip_code_93700,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loanAmnt != null">
+        #{loanAmnt,jdbcType=DOUBLE},
+      </if>
+      <if test="term != null">
+        #{term,jdbcType=DOUBLE},
+      </if>
+      <if test="intRate != null">
+        #{intRate,jdbcType=DOUBLE},
+      </if>
+      <if test="installment != null">
+        #{installment,jdbcType=DOUBLE},
+      </if>
+      <if test="annualInc != null">
+        #{annualInc,jdbcType=DOUBLE},
+      </if>
+      <if test="loanStatus != null">
+        #{loanStatus,jdbcType=DOUBLE},
+      </if>
+      <if test="dti != null">
+        #{dti,jdbcType=DOUBLE},
+      </if>
+      <if test="earliestCrLine != null">
+        #{earliestCrLine,jdbcType=DOUBLE},
+      </if>
+      <if test="openAcc != null">
+        #{openAcc,jdbcType=DOUBLE},
+      </if>
+      <if test="pubRec != null">
+        #{pubRec,jdbcType=DOUBLE},
+      </if>
+      <if test="revolBal != null">
+        #{revolBal,jdbcType=DOUBLE},
+      </if>
+      <if test="revolUtil != null">
+        #{revolUtil,jdbcType=DOUBLE},
+      </if>
+      <if test="totalAcc != null">
+        #{totalAcc,jdbcType=DOUBLE},
+      </if>
+      <if test="mortAcc != null">
+        #{mortAcc,jdbcType=DOUBLE},
+      </if>
+      <if test="pubRecBankruptcies != null">
+        #{pubRecBankruptcies,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeA2 != null">
+        #{subGradeA2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeA3 != null">
+        #{subGradeA3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeA4 != null">
+        #{subGradeA4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeA5 != null">
+        #{subGradeA5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB1 != null">
+        #{subGradeB1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB2 != null">
+        #{subGradeB2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB3 != null">
+        #{subGradeB3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB4 != null">
+        #{subGradeB4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB5 != null">
+        #{subGradeB5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC1 != null">
+        #{subGradeC1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC2 != null">
+        #{subGradeC2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC3 != null">
+        #{subGradeC3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC4 != null">
+        #{subGradeC4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC5 != null">
+        #{subGradeC5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD1 != null">
+        #{subGradeD1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD2 != null">
+        #{subGradeD2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD3 != null">
+        #{subGradeD3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD4 != null">
+        #{subGradeD4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD5 != null">
+        #{subGradeD5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE1 != null">
+        #{subGradeE1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE2 != null">
+        #{subGradeE2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE3 != null">
+        #{subGradeE3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE4 != null">
+        #{subGradeE4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE5 != null">
+        #{subGradeE5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF1 != null">
+        #{subGradeF1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF2 != null">
+        #{subGradeF2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF3 != null">
+        #{subGradeF3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF4 != null">
+        #{subGradeF4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF5 != null">
+        #{subGradeF5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG1 != null">
+        #{subGradeG1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG2 != null">
+        #{subGradeG2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG3 != null">
+        #{subGradeG3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG4 != null">
+        #{subGradeG4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG5 != null">
+        #{subGradeG5,jdbcType=DOUBLE},
+      </if>
+      <if test="verificationStatusSourceVerified != null">
+        #{verificationStatusSourceVerified,jdbcType=DOUBLE},
+      </if>
+      <if test="verificationStatusVerified != null">
+        #{verificationStatusVerified,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeCreditCard != null">
+        #{purposeCreditCard,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeDebtConsolidation != null">
+        #{purposeDebtConsolidation,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeEducational != null">
+        #{purposeEducational,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeHomeImprovement != null">
+        #{purposeHomeImprovement,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeHouse != null">
+        #{purposeHouse,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeMajorPurchase != null">
+        #{purposeMajorPurchase,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeMedical != null">
+        #{purposeMedical,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeMoving != null">
+        #{purposeMoving,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeOther != null">
+        #{purposeOther,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeRenewableEnergy != null">
+        #{purposeRenewableEnergy,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeSmallBusiness != null">
+        #{purposeSmallBusiness,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeVacation != null">
+        #{purposeVacation,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeWedding != null">
+        #{purposeWedding,jdbcType=DOUBLE},
+      </if>
+      <if test="initialListStatusW != null">
+        #{initialListStatusW,jdbcType=DOUBLE},
+      </if>
+      <if test="applicationTypeIndividual != null">
+        #{applicationTypeIndividual,jdbcType=DOUBLE},
+      </if>
+      <if test="applicationTypeJoint != null">
+        #{applicationTypeJoint,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipMortgage != null">
+        #{homeOwnershipMortgage,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipNone != null">
+        #{homeOwnershipNone,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipOther != null">
+        #{homeOwnershipOther,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipOwn != null">
+        #{homeOwnershipOwn,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipRent != null">
+        #{homeOwnershipRent,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode05113 != null">
+        #{zipCode05113,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode11650 != null">
+        #{zipCode11650,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode22690 != null">
+        #{zipCode22690,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode29597 != null">
+        #{zipCode29597,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode30723 != null">
+        #{zipCode30723,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode48052 != null">
+        #{zipCode48052,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode70466 != null">
+        #{zipCode70466,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode86630 != null">
+        #{zipCode86630,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode93700 != null">
+        #{zipCode93700,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chenwei.csust.entity.OriginalData">
+    update original_data
+    <set>
+      <if test="loanAmnt != null">
+        loan_amnt = #{loanAmnt,jdbcType=DOUBLE},
+      </if>
+      <if test="term != null">
+        term = #{term,jdbcType=DOUBLE},
+      </if>
+      <if test="intRate != null">
+        int_rate = #{intRate,jdbcType=DOUBLE},
+      </if>
+      <if test="installment != null">
+        installment = #{installment,jdbcType=DOUBLE},
+      </if>
+      <if test="annualInc != null">
+        annual_inc = #{annualInc,jdbcType=DOUBLE},
+      </if>
+      <if test="loanStatus != null">
+        loan_status = #{loanStatus,jdbcType=DOUBLE},
+      </if>
+      <if test="dti != null">
+        dti = #{dti,jdbcType=DOUBLE},
+      </if>
+      <if test="earliestCrLine != null">
+        earliest_cr_line = #{earliestCrLine,jdbcType=DOUBLE},
+      </if>
+      <if test="openAcc != null">
+        open_acc = #{openAcc,jdbcType=DOUBLE},
+      </if>
+      <if test="pubRec != null">
+        pub_rec = #{pubRec,jdbcType=DOUBLE},
+      </if>
+      <if test="revolBal != null">
+        revol_bal = #{revolBal,jdbcType=DOUBLE},
+      </if>
+      <if test="revolUtil != null">
+        revol_util = #{revolUtil,jdbcType=DOUBLE},
+      </if>
+      <if test="totalAcc != null">
+        total_acc = #{totalAcc,jdbcType=DOUBLE},
+      </if>
+      <if test="mortAcc != null">
+        mort_acc = #{mortAcc,jdbcType=DOUBLE},
+      </if>
+      <if test="pubRecBankruptcies != null">
+        pub_rec_bankruptcies = #{pubRecBankruptcies,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeA2 != null">
+        sub_grade_A2 = #{subGradeA2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeA3 != null">
+        sub_grade_A3 = #{subGradeA3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeA4 != null">
+        sub_grade_A4 = #{subGradeA4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeA5 != null">
+        sub_grade_A5 = #{subGradeA5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB1 != null">
+        sub_grade_B1 = #{subGradeB1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB2 != null">
+        sub_grade_B2 = #{subGradeB2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB3 != null">
+        sub_grade_B3 = #{subGradeB3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB4 != null">
+        sub_grade_B4 = #{subGradeB4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeB5 != null">
+        sub_grade_B5 = #{subGradeB5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC1 != null">
+        sub_grade_C1 = #{subGradeC1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC2 != null">
+        sub_grade_C2 = #{subGradeC2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC3 != null">
+        sub_grade_C3 = #{subGradeC3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC4 != null">
+        sub_grade_C4 = #{subGradeC4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeC5 != null">
+        sub_grade_C5 = #{subGradeC5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD1 != null">
+        sub_grade_D1 = #{subGradeD1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD2 != null">
+        sub_grade_D2 = #{subGradeD2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD3 != null">
+        sub_grade_D3 = #{subGradeD3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD4 != null">
+        sub_grade_D4 = #{subGradeD4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeD5 != null">
+        sub_grade_D5 = #{subGradeD5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE1 != null">
+        sub_grade_E1 = #{subGradeE1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE2 != null">
+        sub_grade_E2 = #{subGradeE2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE3 != null">
+        sub_grade_E3 = #{subGradeE3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE4 != null">
+        sub_grade_E4 = #{subGradeE4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeE5 != null">
+        sub_grade_E5 = #{subGradeE5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF1 != null">
+        sub_grade_F1 = #{subGradeF1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF2 != null">
+        sub_grade_F2 = #{subGradeF2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF3 != null">
+        sub_grade_F3 = #{subGradeF3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF4 != null">
+        sub_grade_F4 = #{subGradeF4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeF5 != null">
+        sub_grade_F5 = #{subGradeF5,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG1 != null">
+        sub_grade_G1 = #{subGradeG1,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG2 != null">
+        sub_grade_G2 = #{subGradeG2,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG3 != null">
+        sub_grade_G3 = #{subGradeG3,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG4 != null">
+        sub_grade_G4 = #{subGradeG4,jdbcType=DOUBLE},
+      </if>
+      <if test="subGradeG5 != null">
+        sub_grade_G5 = #{subGradeG5,jdbcType=DOUBLE},
+      </if>
+      <if test="verificationStatusSourceVerified != null">
+        verification_status_Source_Verified = #{verificationStatusSourceVerified,jdbcType=DOUBLE},
+      </if>
+      <if test="verificationStatusVerified != null">
+        verification_status_Verified = #{verificationStatusVerified,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeCreditCard != null">
+        purpose_credit_card = #{purposeCreditCard,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeDebtConsolidation != null">
+        purpose_debt_consolidation = #{purposeDebtConsolidation,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeEducational != null">
+        purpose_educational = #{purposeEducational,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeHomeImprovement != null">
+        purpose_home_improvement = #{purposeHomeImprovement,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeHouse != null">
+        purpose_house = #{purposeHouse,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeMajorPurchase != null">
+        purpose_major_purchase = #{purposeMajorPurchase,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeMedical != null">
+        purpose_medical = #{purposeMedical,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeMoving != null">
+        purpose_moving = #{purposeMoving,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeOther != null">
+        purpose_other = #{purposeOther,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeRenewableEnergy != null">
+        purpose_renewable_energy = #{purposeRenewableEnergy,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeSmallBusiness != null">
+        purpose_small_business = #{purposeSmallBusiness,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeVacation != null">
+        purpose_vacation = #{purposeVacation,jdbcType=DOUBLE},
+      </if>
+      <if test="purposeWedding != null">
+        purpose_wedding = #{purposeWedding,jdbcType=DOUBLE},
+      </if>
+      <if test="initialListStatusW != null">
+        initial_list_status_w = #{initialListStatusW,jdbcType=DOUBLE},
+      </if>
+      <if test="applicationTypeIndividual != null">
+        application_type_INDIVIDUAL = #{applicationTypeIndividual,jdbcType=DOUBLE},
+      </if>
+      <if test="applicationTypeJoint != null">
+        application_type_JOINT = #{applicationTypeJoint,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipMortgage != null">
+        home_ownership_MORTGAGE = #{homeOwnershipMortgage,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipNone != null">
+        home_ownership_NONE = #{homeOwnershipNone,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipOther != null">
+        home_ownership_OTHER = #{homeOwnershipOther,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipOwn != null">
+        home_ownership_OWN = #{homeOwnershipOwn,jdbcType=DOUBLE},
+      </if>
+      <if test="homeOwnershipRent != null">
+        home_ownership_RENT = #{homeOwnershipRent,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode05113 != null">
+        zip_code_05113 = #{zipCode05113,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode11650 != null">
+        zip_code_11650 = #{zipCode11650,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode22690 != null">
+        zip_code_22690 = #{zipCode22690,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode29597 != null">
+        zip_code_29597 = #{zipCode29597,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode30723 != null">
+        zip_code_30723 = #{zipCode30723,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode48052 != null">
+        zip_code_48052 = #{zipCode48052,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode70466 != null">
+        zip_code_70466 = #{zipCode70466,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode86630 != null">
+        zip_code_86630 = #{zipCode86630,jdbcType=DOUBLE},
+      </if>
+      <if test="zipCode93700 != null">
+        zip_code_93700 = #{zipCode93700,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chenwei.csust.entity.OriginalData">
+    update original_data
+    set loan_amnt = #{loanAmnt,jdbcType=DOUBLE},
+      term = #{term,jdbcType=DOUBLE},
+      int_rate = #{intRate,jdbcType=DOUBLE},
+      installment = #{installment,jdbcType=DOUBLE},
+      annual_inc = #{annualInc,jdbcType=DOUBLE},
+      loan_status = #{loanStatus,jdbcType=DOUBLE},
+      dti = #{dti,jdbcType=DOUBLE},
+      earliest_cr_line = #{earliestCrLine,jdbcType=DOUBLE},
+      open_acc = #{openAcc,jdbcType=DOUBLE},
+      pub_rec = #{pubRec,jdbcType=DOUBLE},
+      revol_bal = #{revolBal,jdbcType=DOUBLE},
+      revol_util = #{revolUtil,jdbcType=DOUBLE},
+      total_acc = #{totalAcc,jdbcType=DOUBLE},
+      mort_acc = #{mortAcc,jdbcType=DOUBLE},
+      pub_rec_bankruptcies = #{pubRecBankruptcies,jdbcType=DOUBLE},
+      sub_grade_A2 = #{subGradeA2,jdbcType=DOUBLE},
+      sub_grade_A3 = #{subGradeA3,jdbcType=DOUBLE},
+      sub_grade_A4 = #{subGradeA4,jdbcType=DOUBLE},
+      sub_grade_A5 = #{subGradeA5,jdbcType=DOUBLE},
+      sub_grade_B1 = #{subGradeB1,jdbcType=DOUBLE},
+      sub_grade_B2 = #{subGradeB2,jdbcType=DOUBLE},
+      sub_grade_B3 = #{subGradeB3,jdbcType=DOUBLE},
+      sub_grade_B4 = #{subGradeB4,jdbcType=DOUBLE},
+      sub_grade_B5 = #{subGradeB5,jdbcType=DOUBLE},
+      sub_grade_C1 = #{subGradeC1,jdbcType=DOUBLE},
+      sub_grade_C2 = #{subGradeC2,jdbcType=DOUBLE},
+      sub_grade_C3 = #{subGradeC3,jdbcType=DOUBLE},
+      sub_grade_C4 = #{subGradeC4,jdbcType=DOUBLE},
+      sub_grade_C5 = #{subGradeC5,jdbcType=DOUBLE},
+      sub_grade_D1 = #{subGradeD1,jdbcType=DOUBLE},
+      sub_grade_D2 = #{subGradeD2,jdbcType=DOUBLE},
+      sub_grade_D3 = #{subGradeD3,jdbcType=DOUBLE},
+      sub_grade_D4 = #{subGradeD4,jdbcType=DOUBLE},
+      sub_grade_D5 = #{subGradeD5,jdbcType=DOUBLE},
+      sub_grade_E1 = #{subGradeE1,jdbcType=DOUBLE},
+      sub_grade_E2 = #{subGradeE2,jdbcType=DOUBLE},
+      sub_grade_E3 = #{subGradeE3,jdbcType=DOUBLE},
+      sub_grade_E4 = #{subGradeE4,jdbcType=DOUBLE},
+      sub_grade_E5 = #{subGradeE5,jdbcType=DOUBLE},
+      sub_grade_F1 = #{subGradeF1,jdbcType=DOUBLE},
+      sub_grade_F2 = #{subGradeF2,jdbcType=DOUBLE},
+      sub_grade_F3 = #{subGradeF3,jdbcType=DOUBLE},
+      sub_grade_F4 = #{subGradeF4,jdbcType=DOUBLE},
+      sub_grade_F5 = #{subGradeF5,jdbcType=DOUBLE},
+      sub_grade_G1 = #{subGradeG1,jdbcType=DOUBLE},
+      sub_grade_G2 = #{subGradeG2,jdbcType=DOUBLE},
+      sub_grade_G3 = #{subGradeG3,jdbcType=DOUBLE},
+      sub_grade_G4 = #{subGradeG4,jdbcType=DOUBLE},
+      sub_grade_G5 = #{subGradeG5,jdbcType=DOUBLE},
+      verification_status_Source_Verified = #{verificationStatusSourceVerified,jdbcType=DOUBLE},
+      verification_status_Verified = #{verificationStatusVerified,jdbcType=DOUBLE},
+      purpose_credit_card = #{purposeCreditCard,jdbcType=DOUBLE},
+      purpose_debt_consolidation = #{purposeDebtConsolidation,jdbcType=DOUBLE},
+      purpose_educational = #{purposeEducational,jdbcType=DOUBLE},
+      purpose_home_improvement = #{purposeHomeImprovement,jdbcType=DOUBLE},
+      purpose_house = #{purposeHouse,jdbcType=DOUBLE},
+      purpose_major_purchase = #{purposeMajorPurchase,jdbcType=DOUBLE},
+      purpose_medical = #{purposeMedical,jdbcType=DOUBLE},
+      purpose_moving = #{purposeMoving,jdbcType=DOUBLE},
+      purpose_other = #{purposeOther,jdbcType=DOUBLE},
+      purpose_renewable_energy = #{purposeRenewableEnergy,jdbcType=DOUBLE},
+      purpose_small_business = #{purposeSmallBusiness,jdbcType=DOUBLE},
+      purpose_vacation = #{purposeVacation,jdbcType=DOUBLE},
+      purpose_wedding = #{purposeWedding,jdbcType=DOUBLE},
+      initial_list_status_w = #{initialListStatusW,jdbcType=DOUBLE},
+      application_type_INDIVIDUAL = #{applicationTypeIndividual,jdbcType=DOUBLE},
+      application_type_JOINT = #{applicationTypeJoint,jdbcType=DOUBLE},
+      home_ownership_MORTGAGE = #{homeOwnershipMortgage,jdbcType=DOUBLE},
+      home_ownership_NONE = #{homeOwnershipNone,jdbcType=DOUBLE},
+      home_ownership_OTHER = #{homeOwnershipOther,jdbcType=DOUBLE},
+      home_ownership_OWN = #{homeOwnershipOwn,jdbcType=DOUBLE},
+      home_ownership_RENT = #{homeOwnershipRent,jdbcType=DOUBLE},
+      zip_code_05113 = #{zipCode05113,jdbcType=DOUBLE},
+      zip_code_11650 = #{zipCode11650,jdbcType=DOUBLE},
+      zip_code_22690 = #{zipCode22690,jdbcType=DOUBLE},
+      zip_code_29597 = #{zipCode29597,jdbcType=DOUBLE},
+      zip_code_30723 = #{zipCode30723,jdbcType=DOUBLE},
+      zip_code_48052 = #{zipCode48052,jdbcType=DOUBLE},
+      zip_code_70466 = #{zipCode70466,jdbcType=DOUBLE},
+      zip_code_86630 = #{zipCode86630,jdbcType=DOUBLE},
+      zip_code_93700 = #{zipCode93700,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from original_data
+  </select>
+</mapper>

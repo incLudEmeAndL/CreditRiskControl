@@ -105,10 +105,12 @@ object BaseDataApp {
           val credit = creditRDD.map(parseCredit)
 
           val creditDF = spark.createDataFrame(credit).cache()
-          // 原始数据入库
-          println("开始写入数据库……")
-          MySQLUtils.dfSaveToMySQL(creditDF)
-          println("初始数据写入完成，成功写入：" + creditDF.count() + "行")
+          if (!creditDF.isEmpty) {
+            // 原始数据入库
+            println("开始写入数据库……")
+            MySQLUtils.dfSaveToMySQL(creditDF)
+            println("初始数据写入完成，成功写入：" + creditDF.count() + "行")
+          }
 
           creditDF.registerTempTable("credit")
           // creditDF.show()
