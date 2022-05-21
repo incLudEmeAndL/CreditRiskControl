@@ -19,7 +19,7 @@
         </jdbcConnection>
         <!-- 生成 model 类，targetPackage 指定 model 类的包名， targetProject 指定
        生成的 model 放在 eclipse 的哪个工程下面-->
-        <javaModelGenerator targetPackage="com.chenwei.csust.model"
+        <javaModelGenerator targetPackage="com.chenwei.csust.entity"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
             <property name="trimStrings" value="false" />
@@ -33,11 +33,12 @@
         <!-- 生成 MyBatis 的 Mapper 接口类文件,targetPackage 指定 Mapper 接口类的包
        名， targetProject 指定生成的 Mapper 接口放在 eclipse 的哪个工程下面 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.abc.springboot.mapper" targetProject="src/main/java">
+                             targetPackage="com.chenwei.csust.mapper"
+                             targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 数据库表名及对应的 Java 模型类名 -->
-        <table tableName="original_data_columns" domainObjectName="OriginalDataColumns"
+        <table tableName="model_info" domainObjectName="ModelInfo"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"

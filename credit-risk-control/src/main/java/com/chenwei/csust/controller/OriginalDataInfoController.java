@@ -37,10 +37,10 @@ public class OriginalDataInfoController {
     public ApiResult getColumnNames() {
         Object object = originalDataInfoService.getColumnNames();
         if (object != null) {
-            logger.info("[getColumnNames] success: 成功返回数据列信息");
+            logger.info("[OriginalDataInfoController]-getColumnNames success: 成功返回数据列信息");
             return ApiResultHandler.success(object);
         } else {
-            logger.info("[getColumnNames] fail: 获取列信息异常");
+            logger.info("[OriginalDataInfoController]-getColumnNames fail: 获取列信息异常");
             return ApiResultHandler.buildApiResult(ResponseStatusConst.CodeBizError, "获取列信息异常", null);
         }
     }

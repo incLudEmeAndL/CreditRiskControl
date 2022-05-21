@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 @EnableTransactionManagement
-@MapperScan("com.chenwei.csust.*.mapper")
+@MapperScan("com.chenwei.csust.mapper")
 @ComponentScan(basePackages = "com.chenwei.csust.**")
 @EnableSwagger2
 public class CreditRiskControlApplication
