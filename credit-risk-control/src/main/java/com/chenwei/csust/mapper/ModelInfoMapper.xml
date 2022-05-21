@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenwei.csust.mapper.ModelInfoMapper">
+  <resultMap id="BaseResultMap" type="com.chenwei.csust.entity.ModelInfo">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Path" jdbcType="VARCHAR" property="path" />
+    <result column="Accuracy" jdbcType="DOUBLE" property="accuracy" />
+    <result column="MSE" jdbcType="DOUBLE" property="mse" />
+    <result column="MAE" jdbcType="DOUBLE" property="mae" />
+    <result column="RMSESquared" jdbcType="DOUBLE" property="rmsesquared" />
+    <result column="Type" jdbcType="VARCHAR" property="type" />
+    <result column="CreatedAt" jdbcType="TIMESTAMP" property="createdat" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, Name, Path, Accuracy, MSE, MAE, RMSESquared, Type, CreatedAt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from model_info
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from model_info
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chenwei.csust.entity.ModelInfo">
+    insert into model_info (Id, Name, Path, 
+      Accuracy, MSE, MAE, RMSESquared, 
+      Type, CreatedAt)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{accuracy,jdbcType=DOUBLE}, #{mse,jdbcType=DOUBLE}, #{mae,jdbcType=DOUBLE}, #{rmsesquared,jdbcType=DOUBLE}, 
+      #{type,jdbcType=VARCHAR}, #{createdat,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chenwei.csust.entity.ModelInfo">
+    insert into model_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="path != null">
+        Path,
+      </if>
+      <if test="accuracy != null">
+        Accuracy,
+      </if>
+      <if test="mse != null">
+        MSE,
+      </if>
+      <if test="mae != null">
+        MAE,
+      </if>
+      <if test="rmsesquared != null">
+        RMSESquared,
+      </if>
+      <if test="type != null">
+        Type,
+      </if>
+      <if test="createdat != null">
+        CreatedAt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="accuracy != null">
+        #{accuracy,jdbcType=DOUBLE},
+      </if>
+      <if test="mse != null">
+        #{mse,jdbcType=DOUBLE},
+      </if>
+      <if test="mae != null">
+        #{mae,jdbcType=DOUBLE},
+      </if>
+      <if test="rmsesquared != null">
+        #{rmsesquared,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createdat != null">
+        #{createdat,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chenwei.csust.entity.ModelInfo">
+    update model_info
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        Path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="accuracy != null">
+        Accuracy = #{accuracy,jdbcType=DOUBLE},
+      </if>
+      <if test="mse != null">
+        MSE = #{mse,jdbcType=DOUBLE},
+      </if>
+      <if test="mae != null">
+        MAE = #{mae,jdbcType=DOUBLE},
+      </if>
+      <if test="rmsesquared != null">
+        RMSESquared = #{rmsesquared,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null">
+        Type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createdat != null">
+        CreatedAt = #{createdat,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chenwei.csust.entity.ModelInfo">
+    update model_info
+    set Name = #{name,jdbcType=VARCHAR},
+      Path = #{path,jdbcType=VARCHAR},
+      Accuracy = #{accuracy,jdbcType=DOUBLE},
+      MSE = #{mse,jdbcType=DOUBLE},
+      MAE = #{mae,jdbcType=DOUBLE},
+      RMSESquared = #{rmsesquared,jdbcType=DOUBLE},
+      Type = #{type,jdbcType=VARCHAR},
+      CreatedAt = #{createdat,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from model_info
+    order by createdAt desc
+  </select>
+
+  <select id="getMaxAccuracyModelByType" resultMap="BaseResultMap" parameterType="String">
+    select
+    <include refid="Base_Column_List" />
+    from model_info
+    where accuracy = (
+      select max(accuracy) from model_info
+    )
+    <if test="modelType != null">
+      and type = #{modelType,jdbcType=VARCHAR}
+    </if>
+  </select>
+</mapper>
