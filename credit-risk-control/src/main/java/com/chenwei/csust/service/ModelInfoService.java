@@ -16,4 +16,11 @@ public interface ModelInfoService {
      * @return
      */
     ModelInfoDto getMaxAccuracyModel(String modelType);
+
+    /**
+     * 通过id获取模型信息
+     * @param modelId
+     * @return
+     */
+    ModelInfoDto getModelById(Integer modelId);
 }

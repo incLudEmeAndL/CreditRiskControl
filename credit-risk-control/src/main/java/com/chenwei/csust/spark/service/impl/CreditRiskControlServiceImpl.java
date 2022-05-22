@@ -1,5 +1,8 @@
 package com.chenwei.csust.spark.service.impl;
 
+import com.chenwei.csust.model.ControlResult;
+import com.chenwei.csust.model.ModelInfoDto;
+import com.chenwei.csust.service.ModelInfoService;
 import com.chenwei.csust.spark.config.HDFSConfig;
 import com.chenwei.csust.spark.config.SparkConfig;
 import com.chenwei.csust.model.PredictionSearchEntity;
@@ -9,11 +12,13 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.spark.SparkContext;
 import org.apache.spark.ml.classification.RandomForestClassificationModel;
 import org.apache.spark.ml.feature.StringIndexer;
 import org.apache.spark.ml.feature.VectorAssembler;
 import org.apache.spark.ml.tuning.CrossValidatorModel;
 import org.apache.spark.sql.*;
+import org.apache.spark.sql.catalyst.expressions.GenericRowWithSchema;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +26,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,14 +36,27 @@ public class CreditRiskControlServiceImpl implements CreditRiskControlService {
     HDFSConfig hdfsConfig;
     @Autowired
     SparkConfig sparkConfig;
+    @Autowired
+    ModelInfoService modelInfoService;
 
     @Override
-    public List<Dataset<Row>> riskControl(PredictionSearchEntity searchData){
-        List<Dataset<Row>> resultList = new ArrayList<>();
+    public ControlResult riskControl(PredictionSearchEntity searchData){
+        ModelInfoDto modelInfoDto = modelInfoService.getModelById(searchData.modelId);
+        if (modelInfoDto == null) {
+            return null;
+        }
+        String strPath = modelInfoDto.getPath() + "-" + modelInfoDto.getType() + "-" + modelInfoDto.getName();
+        logger.info(strPath);
 
+        // 定义返回结果
+        ControlResult result = new ControlResult();
+
+        // 配置hdfs信息
         Configuration configuration = sparkConfig.getHadoopConfiguration();
+        SparkContext context = sparkConfig.getContext();
         SparkSession sparkSession = sparkConfig.getSparkSession();
 
+        // 数据实例化
         RiskControlModel modelData = new RiskControlModel(searchData.searchData[0], searchData.searchData[1],
                 searchData.searchData[2], searchData.searchData[3],
                 searchData.searchData[4], searchData.searchData[5], searchData.searchData[6], searchData.searchData[7],
@@ -94,54 +111,64 @@ public class CreditRiskControlServiceImpl implements CreditRiskControlService {
         };
 
 
-        Encoder<RiskControlModel> modelEncoder = Encoders.bean(RiskControlModel.class);
-        Dataset<RiskControlModel> dataset = sparkSession.createDataset(Collections.singletonList(modelData), modelEncoder);
+        Dataset<Row> dataFrame = sparkSession.createDataFrame(Collections.singletonList(modelData), RiskControlModel.class);
         VectorAssembler assembler = new VectorAssembler().setInputCols(featureCols).setOutputCol("features");
-        Dataset<Row> transform = assembler.transform(dataset);
+        Dataset<Row> transform = assembler.transform(dataFrame);
 
         StringIndexer labelIndexer = new StringIndexer().setInputCol("loan_status").setOutputCol("label");
         Dataset<Row> transformDF = labelIndexer.fit(transform).transform(transform);
 
-        // transformDF.show();
+
+        // dataFrame.show();
 
         try {
             // 从HDFS读取模型
             FileSystem fileSystem = FileSystem.get(configuration);
-            Path path1 = new Path(hdfsConfig.getPath()+hdfsConfig.getModel1());
-            Path path2 = new Path(hdfsConfig.getPath()+hdfsConfig.getModel2());
-            ObjectInputStream objectInputStream1 = new ObjectInputStream(new FSDataInputStream(fileSystem.open(path1)));
-            ObjectInputStream objectInputStream2 = new ObjectInputStream(new FSDataInputStream(fileSystem.open(path2)));
+            Path path = new Path(strPath);
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FSDataInputStream(fileSystem.open(path)));
 
-            RandomForestClassificationModel randomForestModel = (RandomForestClassificationModel)objectInputStream1.readObject();
-            CrossValidatorModel pipelineRandomForestModel = (CrossValidatorModel)objectInputStream2.readObject();
-            // System.out.println(randomForestModel);
-            // System.out.println(pipelineRandomForestModel);
+            Object modelObject = objectInputStream.readObject();
 
-            // randomForestModel
-            // 预测
-            Dataset<Row> prediction = randomForestModel.transform(transformDF);
-            prediction.show();
+            Dataset<Row> resultDataSet = null;
+            if (modelObject instanceof RandomForestClassificationModel) {
+                RandomForestClassificationModel randomForestModel = (RandomForestClassificationModel)modelObject;
 
-            // pipelineRandomForestModel
-            // 预测
-            Dataset<Row> pipelinePrediction = pipelineRandomForestModel.transform(transformDF);
-            pipelinePrediction.show();
+                // randomForestModel
+                // 预测
+                Dataset<Row> prediction = randomForestModel.transform(transformDF);
+                prediction.show();
 
-            // 结果评估
-            Dataset<Row> selectData = prediction.select("label", "rawPrediction", "probability", "prediction");
-            System.out.println(selectData.columns().toString());
-            selectData.show();
-            resultList.add(selectData);
+                // 结果评估
+                Dataset<Row> selectData = prediction.select("label", "rawPrediction", "probability", "prediction");
+                // System.out.println(selectData.columns().toString());
+                selectData.show();
+                resultDataSet = selectData;
 
-            // pipeline模型评估
-            Dataset<Row> pipelineSelectData = pipelinePrediction.select("label", "rawPrediction", "probability", "prediction");
-            // System.out.println(selectData.columns().toString());
-            pipelineSelectData.show();
-            resultList.add(pipelineSelectData);
+            } else if (modelObject instanceof CrossValidatorModel){
+                CrossValidatorModel pipelineRandomForestModel = (CrossValidatorModel)modelObject;
 
+                // pipelineRandomForestModel
+                // 预测
+                Dataset<Row> pipelinePrediction = pipelineRandomForestModel.transform(transformDF);
+                pipelinePrediction.show();
+
+                // pipeline模型评估
+                Dataset<Row> pipelineSelectData = pipelinePrediction.select("label", "rawPrediction", "probability", "prediction");
+                // System.out.println(selectData.columns().toString());
+                pipelineSelectData.show();
+                resultDataSet = pipelineSelectData;
+            }
+
+            GenericRowWithSchema row = (GenericRowWithSchema) resultDataSet.javaRDD().collect().get(0);
+            Object[] values = row.values();
+            result.setLabel((Double) values[0]);
+            result.setRawPrediction(values[1]);
+            result.setProbability(values[2]);
+            result.setPrediction((Double) values[3]);
+            return result;
         } catch (IOException | ClassNotFoundException e) {
             logger.error(e.getMessage());
         }
-        return resultList;
+        return result;
     }
 }

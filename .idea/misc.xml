@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/credit-risk-control/pom.xml" />
+        <option value="$PROJECT_DIR$/data-source-spark-streaming/pom.xml" />
       </list>
     </option>
   </component>

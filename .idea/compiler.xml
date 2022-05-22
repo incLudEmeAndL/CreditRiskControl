@@ -8,10 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="credit-risk-control" />
+        <module name="data-source-spark-streaming" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="credit-risk-control" target="1.8" />
+      <module name="data-source-spark-streaming" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

@@ -24,4 +24,5 @@ public interface ModelInfoMapper {
     List<ModelInfo> getList();
 
     ModelInfo getMaxAccuracyModelByType(String modelType);
+
 }

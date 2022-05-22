@@ -55,4 +55,20 @@ public class ModelInfoServiceImpl implements ModelInfoService {
                 modelInfo.getCreatedat()
         );
     }
+
+    @Override
+    public ModelInfoDto getModelById(Integer modelId) {
+        ModelInfo modelInfo =  modelInfoMapper.selectByPrimaryKey(modelId);
+        return new ModelInfoDto(
+                modelInfo.getId(),
+                modelInfo.getName(),
+                modelInfo.getPath(),
+                modelInfo.getAccuracy(),
+                modelInfo.getMse(),
+                modelInfo.getMae(),
+                modelInfo.getRmsesquared(),
+                modelInfo.getType(),
+                modelInfo.getCreatedat()
+        );
+    }
 }

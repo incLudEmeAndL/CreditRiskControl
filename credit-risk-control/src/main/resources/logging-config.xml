@@ -85,6 +85,9 @@
         <Logger name="org.springframework" level="info" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
+        <Logger name="org.apache.spark" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
 
         <root level="debug">
             <appender-ref ref="Console"/>
