@@ -130,7 +130,7 @@ object BaseDataApp {
               "sub_grade_F4", "sub_grade_F5", "sub_grade_G1", "sub_grade_G2",
               "sub_grade_G3", "sub_grade_G4", "sub_grade_G5",
               "verification_status_Source_Verified", "verification_status_Verified",
-              "purpose_credit_card", "purpose_debt_consolidation",
+              "purpose_credit_card", "purpos   e_debt_consolidation",
               "purpose_educational", "purpose_home_improvement", "purpose_house",
               "purpose_major_purchase", "purpose_medical", "purpose_moving",
               "purpose_other", "purpose_renewable_energy", "purpose_small_business",

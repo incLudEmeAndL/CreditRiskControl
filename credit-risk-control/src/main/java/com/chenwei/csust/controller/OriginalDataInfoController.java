@@ -2,8 +2,13 @@ package com.chenwei.csust.controller;
 
 import com.chenwei.csust.common.constante.ResponseStatusConst;
 import com.chenwei.csust.common.entity.ApiResult;
+import com.chenwei.csust.entity.LendingClubLoan;
+import com.chenwei.csust.model.BaseParam;
 import com.chenwei.csust.service.OriginalDataInfoService;
+import com.chenwei.csust.service.OriginalDataService;
 import com.chenwei.csust.util.ApiResultHandler;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -15,11 +20,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * 原始数据探索
  */
 @RestController
-@RequestMapping("/datasource")
+@RequestMapping("/originalData")
 @Api(value = "datasource")
 public class OriginalDataInfoController {
     private static final Logger logger = LoggerFactory.getLogger(OriginalDataInfoController.class);
@@ -43,5 +51,28 @@ public class OriginalDataInfoController {
             logger.info("[OriginalDataInfoController]-getColumnNames fail: 获取列信息异常");
             return ApiResultHandler.buildApiResult(ResponseStatusConst.CodeBizError, "获取列信息异常", null);
         }
+    }
+
+    @Autowired
+    OriginalDataService originalDataService;
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    @ApiOperation(value = "获取原始数据列表", notes = "获取原始数据列表")
+    public ApiResult getOriginalDataList(BaseParam baseParam, String staffId){
+        logger.info(staffId);
+
+        PageHelper.startPage(baseParam.getPageNo(), baseParam.getPageSize());
+
+        List<LendingClubLoan> listModelInfo = originalDataService.getList();
+
+        PageInfo<LendingClubLoan> pageInfo = new PageInfo<>(listModelInfo);
+        pageInfo.setList(null);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("listOriginalData", listModelInfo);
+        hashMap.put("pager", pageInfo);
+
+        return ApiResultHandler.success(hashMap);
     }
 }

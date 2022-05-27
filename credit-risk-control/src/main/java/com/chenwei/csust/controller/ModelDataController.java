@@ -1,8 +1,9 @@
 package com.chenwei.csust.controller;
 
 import com.chenwei.csust.common.entity.ApiResult;
-import com.chenwei.csust.entity.OriginalData;
+import com.chenwei.csust.entity.ModelData;
 import com.chenwei.csust.model.BaseParam;
+import com.chenwei.csust.service.ModelDataService;
 import com.chenwei.csust.service.OriginalDataService;
 import com.chenwei.csust.util.ApiResultHandler;
 import com.github.pagehelper.PageHelper;
@@ -21,25 +22,25 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/originalData")
+@RequestMapping(value = "/modelData")
 @Api(value = "datasource")
-public class OriginalDataController {
-    private Logger logger = LoggerFactory.getLogger(OriginalDataController.class);
+public class ModelDataController {
+    private Logger logger = LoggerFactory.getLogger(ModelDataController.class);
 
     @Autowired
-    OriginalDataService originalDataService;
+    ModelDataService modelDataService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    @ApiOperation(value = "获取原始数据列表", notes = "获取原始数据列表")
+    @ApiOperation(value = "获取模型训练数据列表", notes = "获取模型训练数据列表")
     public ApiResult getOriginalDataList(BaseParam baseParam, String staffId){
         logger.info(staffId);
 
         PageHelper.startPage(baseParam.getPageNo(), baseParam.getPageSize());
 
-        List<OriginalData> listModelInfo = originalDataService.getList();
+        List<ModelData> listModelInfo = modelDataService.getList();
 
-        PageInfo<OriginalData> pageInfo = new PageInfo<>(listModelInfo);
+        PageInfo<ModelData> pageInfo = new PageInfo<>(listModelInfo);
         pageInfo.setList(null);
 
         HashMap<String, Object> hashMap = new HashMap<>();
